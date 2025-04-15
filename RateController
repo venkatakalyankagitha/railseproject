@@ -1,0 +1,21 @@
+package com.railse.example.controller;
+
+import com.railse.example.DTO.RateRequestDTO;
+import com.railse.example.DTO.RateResponseDTO;
+import com.railse.example.service.RateService;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/rate")
+@RequiredArgsConstructor
+public class RateController {
+
+    private final RateService rateService;
+
+    @PostMapping("/calculate")
+    public RateResponseDTO calculateRate(@RequestBody RateRequestDTO request) {
+        return rateService.calculateRate(request);
+    }
+}
